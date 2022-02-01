@@ -6,10 +6,10 @@ global cwd
 cwd = os.getcwd()
 
 start = "Hand"
-flop =  "FLOP"
-turn =  "TURN"
-river = "RIVER"
-end =   "SUMMARY"
+flop =  "Flop"
+turn =  "Turn"
+river = "River"
+end =   "Summary"
 dealt = "Dealt"
 collected = "collected"
 seat = "Seat"
@@ -168,11 +168,11 @@ else:
     print("error file number")
     sys.exit()
 hero = ""
-villain = "DeepStack"
-villain_nickname = "deep.stack"
+villain = "Villain"
+villain_nickname = "Villain"
 if pl == 1:
-    hero = "bachmann.juergen"
-    f = open(cwd + '\\full_info\\all_hands.bachmann.juergen.log',"r")
+    hero = "Hero"
+    f = open(cwd + '\\hh\\HH1.txt',"r")
 elif pl == 2:
     hero = "bos.alexander"
     f = open(cwd + '\\full_info\\all_hands.bos.alexander.log',"r")
