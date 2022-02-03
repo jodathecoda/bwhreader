@@ -471,13 +471,13 @@ while(True):
                 for potential_bet in isthis_bet:
                     if potential_bet.isdigit():
                         if back:
-                            pot -= int(potential_bet)
+                            pot -= float(potential_bet)
                         else:
-                            pot += int(potential_bet)
+                            pot += float(potential_bet)
                             if villain in current:
-                                vilbet = int(potential_bet)
+                                vilbet = float(potential_bet)
                             else:
-                                herobet = int(potential_bet)
+                                herobet = float(potential_bet)
                             pot = pot_offset + herobet + vilbet
                         found_bet = 1
                         if incognito:
@@ -495,13 +495,13 @@ while(True):
                 for potential_bet in isthis_bet:
                     if potential_bet.isdigit():
                         if back:
-                            pot -= int(potential_bet)
+                            pot -= float(potential_bet)
                         else:
-                            pot += int(potential_bet)
+                            pot += float(potential_bet)
                             if villain in current:
-                                vilbet += int(potential_bet)
+                                vilbet += float(potential_bet)
                             else:
-                                herobet += int(potential_bet)
+                                herobet += float(potential_bet)
                             pot = pot_offset + herobet + vilbet
                         found_bet = 1
                         if incognito:
