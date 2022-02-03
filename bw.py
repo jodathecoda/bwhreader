@@ -13,6 +13,7 @@ end =   "Summary"
 dealt = "Dealt"
 collected = "collected"
 seat = "Seat"
+balance = "balance"
 
 checks = "checks"
 posts =  "posts"
@@ -59,6 +60,7 @@ actions.append(folds)
 actions.append(checks)
 actions.append(dealt)
 actions.append(collected)
+actions.append(balance)
 
 flop_table = ""
 turn_table = ""
@@ -484,6 +486,11 @@ while(True):
                             print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
                         else:
                             print_table("Hand #" + str(current_hand_number), current)
+        elif balance in current:
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
         elif  posts in current or calls in current:
             tokens = current.split()
             potential_bet = 0
