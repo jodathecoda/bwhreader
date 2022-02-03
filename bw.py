@@ -381,7 +381,7 @@ while(True):
             vilbet = 0
             skip_print = 1
         if "Dealt" in current and hero in current:
-            hero_hand = current[-8:]
+            hero_hand = current[-11:]
             if incognito:
                 pass
             else:
@@ -402,7 +402,7 @@ while(True):
                 villain_hand = villain_hand.replace("c", suit_club)
             skip_print = 1
         if flop in current:
-            flop_table = current[-11:]
+            flop_table = current[-16:]
             if incognito:
                 pass
             else:
@@ -412,7 +412,7 @@ while(True):
                 flop_table = flop_table.replace("c", suit_club)
             skip_print = 1
         if turn in current:
-            turn_table = current[-5:]
+            turn_table = current[-8:]
             if incognito:
                 pass
             else:
@@ -422,7 +422,9 @@ while(True):
                 turn_table = turn_table.replace("c", suit_club)
             skip_print = 1
         if river in current:
-            river_table = current[-5:]
+            #print(current)
+            #dumb = input("]-------------------------------------------------")
+            river_table = current[-8:]
             if incognito:
                 pass
             else:
