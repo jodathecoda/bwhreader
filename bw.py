@@ -486,13 +486,22 @@ while(True):
                             print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
                         else:
                             print_table("Hand #" + str(current_hand_number), current)
-        elif balance in current:
+        elif balance in current and villain in current:
             if "[" in current:
                 val = current.split('[', 1)[1].split(']')[0]
+                villain_hand = "[ " + val + " ]"
+                #villain_hand_raw = current[-8:]
                 if incognito:
-                    print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", val)
+                    pass
                 else:
-                    print_table("Hand #" + str(current_hand_number), val)
+                    villain_hand = villain_hand.replace("s", suit_spade)
+                    villain_hand = villain_hand.replace("h", suit_heart)
+                    villain_hand = villain_hand.replace("d", suit_diamond)
+                    villain_hand = villain_hand.replace("c", suit_club)
+                if incognito:
+                    print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", " ")
+                else:
+                    print_table("Hand #" + str(current_hand_number), " ")
         elif  posts in current or calls in current:
             tokens = current.split()
             potential_bet = 0
