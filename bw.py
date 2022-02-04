@@ -23,6 +23,7 @@ raises = "raises"
 folds =  "folds"
 small_blind = "small"
 big_blind = "big"
+table = "Table"
 
 RED   = '\033[1;31m'
 BLUE  = '\033[1;34m'
@@ -61,6 +62,7 @@ actions.append(checks)
 actions.append(dealt)
 actions.append(collected)
 actions.append(balance)
+actions.append(seat)
 
 flop_table = ""
 turn_table = ""
@@ -69,6 +71,8 @@ hand_title = ""
 hand_action = ""
 hero_button = ""
 villain_button = ""
+villain_starting_stack = ""
+hero_starting_stack = ""
 
 def print_table(hand_title, hand_action):
     if skip_print:
@@ -79,16 +83,18 @@ def print_table(hand_title, hand_action):
         print("sum:" + str(pot) + " " +flop_table.rstrip()[1:-1] + turn_table.rstrip()[1:-1] + river_table[1:-2] + " " + hand_title)
     else:
         print(hand_title)
-        print(villain_nickname + " "+ villain_button + " " + villain_hand)
-        print("-----------------------------")
+        print("starting stack: " + villain_starting_stack)
+        print(villain_nickname + " " + villain_button + " " + villain_hand)
+        print("----------------------------------------")
         print("     " + str(vilbet))
         print("")
         print("     " + flop_table.rstrip() + turn_table.rstrip() + river_table)
         print(" pot: " + str(pot))
         print("")
         print("     " + str(herobet))
-        print("-----------------------------")
+        print("----------------------------------------")
         print(hero + " " + hero_button + " " + hero_hand)
+        print("starting stack: " + hero_starting_stack)
         print("")
         print(hand_action)
     dumb = input("]")
@@ -293,7 +299,8 @@ for current_line in history:
         counter_hands += 1
     tokens = current_line.split()
     for act in actions:
-        if act in tokens and seat not in tokens:
+        #if act in tokens and seat not in tokens:
+        if act in tokens and table not in tokens:
             action_points.append(current_line)
     line_counter += 1
 
@@ -324,6 +331,8 @@ hand_title = ""
 hand_action = ""
 hero_button = ""
 villain_button = ""
+villain_starting_stack = ""
+hero_starting_stack = ""
 if incognito:
     hero_button = "(?)"
     villain_button = "(?)"
@@ -347,6 +356,8 @@ while(True):
         river_table = ""
         hero_button = ""
         villain_button = ""
+        hero_starting_stack = ""
+        villain_starting_stack = ""
         if incognito:
             hero_button = "(?)"
             villain_button = "(?)"
@@ -486,6 +497,17 @@ while(True):
                             print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
                         else:
                             print_table("Hand #" + str(current_hand_number), current)
+        if seat in current and hero in current:
+            tokens = current.split()
+            potential_bet = 0
+            found_bet = 0
+            hero_starting_stack = tokens[-1]
+        if seat in current and villain in current:
+            tokens = current.split()
+            potential_bet = 0
+            found_bet = 0
+            villain_starting_stack = tokens[-1]
+
         elif balance in current and villain in current:
             if "[" in current:
                 val = current.split('[', 1)[1].split(']')[0]
