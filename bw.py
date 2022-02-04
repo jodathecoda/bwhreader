@@ -487,10 +487,12 @@ while(True):
                         else:
                             print_table("Hand #" + str(current_hand_number), current)
         elif balance in current:
-            if incognito:
-                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-            else:
-                print_table("Hand #" + str(current_hand_number), current)
+            if "[" in current:
+                val = current.split('[', 1)[1].split(']')[0]
+                if incognito:
+                    print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", val)
+                else:
+                    print_table("Hand #" + str(current_hand_number), val)
         elif  posts in current or calls in current:
             tokens = current.split()
             potential_bet = 0
